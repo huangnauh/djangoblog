@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-
+from article.views import RSSFeed
 
 urlpatterns = patterns('',
     # Examples:
@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r"^(?P<id>\d+)/$",'article.views.detail',name='detail'),
     url(r"^archive/$",'article.views.archive',name='archive'),
     url(r"^tag(?P<tag>\w+)/$",'article.views.search_tag',name='search_tag'),
+    url(r"^feed/$",RSSFeed(),name='RSS'),
 )
