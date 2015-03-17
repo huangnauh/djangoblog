@@ -43,9 +43,14 @@ def logout(request):
         pass
     return HttpResponseRedirect('/login/')
 
+class GBKHttpResponse(HttpResponse):
+    def __init__(self,content=b'',*args,**kwargs):
+        super(GBKHttpResponse,self).__init__(content=content,*args,**kwargs)
+        self._charset = "GBK"
+
 def output(request,filename):
     address = [(1,2),('一','二')]
-    response = HttpResponse(content_type="text/csv")
+    response = GBKHttpResponse(content_type="text/csv")
     response['Content-Disposition'] = 'attachment;filename={0}'.format(filename)
     t = loader.get_template('csv.html')
     c = Context({

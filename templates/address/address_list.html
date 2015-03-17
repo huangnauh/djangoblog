@@ -1,15 +1,24 @@
 {% extends "base.html"%}
 
 {% block content%}
-<h1>通讯录</h1>
+<h2>通讯录</h2>
 <hr>
+<form class="pure-form" enctype="multipart/form-data" method="POST" action="/address/upload/">
+    <fieldset>
+    <p>上传通信录文件：<input type="file" name="file"/></p>
+    <input type="submit" class="pure-button pure-button-primary" value="上传文件">
+    </fieldset>
+</form>
 <table class="pure-table">
+    <thead>
     <tr >
         <th class="pure-table th">姓名</th>
         <th class="pure-table th">性别</th>
         <th class="pure-table th">电话</th>
         <th class="pure-table th">手机</th>
     </tr>
+    </thead>
+    <body>
     {% for person in object_list %}
     <tr>
         <td class="pure-table td"> {{ person.name }}</td>
@@ -18,5 +27,6 @@
         <td class="pure-table td"> {{ person.mobile }}</td>
     </tr>
     {% endfor %}
+    </body>
 </table>
 {% endblock %}
