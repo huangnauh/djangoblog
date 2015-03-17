@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.contrib import admin
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -8,5 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$','article.views.home'),
-    url(r"^(?P<args>\d+)/$",'article.views.detail',name='detail'),
+    url(r"^(?P<id>\d+)/$",'article.views.detail',name='detail'),
+    url(r"^archive/$",'article.views.archive',name='archive'),
+    url(r"^tag(?P<tag>\w+)/$",'article.views.search_tag',name='search_tag'),
 )
