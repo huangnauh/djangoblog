@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block content%}
+<h1>通讯录</h1>
+<hr>
+<table class="pure-table">
+    <tr >
+        <th class="pure-table th">姓名</th>
+        <th class="pure-table th">性别</th>
+        <th class="pure-table th">电话</th>
+        <th class="pure-table th">手机</th>
+    </tr>
+    {% for person in object_list %}
+    <tr>
+        <td class="pure-table td"> {{ person.name }}</td>
+        <td class="pure-table td"> {{ person.gender }}</td>
+        <td class="pure-table td"> {{ person.telphone }}</td>
+        <td class="pure-table td"> {{ person.mobile }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

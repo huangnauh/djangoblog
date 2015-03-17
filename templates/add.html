@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="posts">
+    <section class="post">
+        <header class="post-header">
+            <h2 class="post-title">这是一个悲剧的加法器</h2>
+        </header>
+        <div class="post-description">
+        <form method="post" action="/add/">
+            <input type="text" name="one" value="{{ a }}"> + <input type="text" name="two" value="{{ b }}">
+            <input type="submit" value="="><input type="text" value="{{ sum }}">
+        </form>
+        </div>
+    </section>
+</div>
+{% endblock %}
