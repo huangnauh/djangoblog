@@ -3,7 +3,7 @@
 {% block content%}
 <h2>通讯录</h2>
 <hr>
-<form class="pure-form" enctype="multipart/form-data" method="POST" action="/address/upload/">
+<form class="pure-form" enctype="multipart/form-data" method="POST" action="upload/">
     <fieldset>
     <p>上传通信录文件：<input type="file" name="file"/></p>
     <input type="submit" class="pure-button pure-button-primary" value="上传文件">
@@ -29,4 +29,16 @@
     {% endfor %}
     </body>
 </table>
+    <br/>
+    {% if is_paginated %}
+        <div>
+            {% if page_obj.has_previous %}
+                <a class="pure-button pure-button-primary" href="?page={{ page_obj.previous_page_number }}">prev</a>
+
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a class="pure-button pure-button-primary" href="?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}

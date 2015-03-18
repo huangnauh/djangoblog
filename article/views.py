@@ -8,6 +8,7 @@ from django.contrib.syndication.views import Feed
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 from django.template import loader,Context
+import csv
 # Create your views here.
 
 class RSSFeed(Feed):
@@ -49,12 +50,15 @@ class GBKHttpResponse(HttpResponse):
         self._charset = "GBK"
 
 def output(request,filename):
-    address = [(1,2),('一','二')]
+    address = [(1,2),('三','四'),(1,2)]
     response = GBKHttpResponse(content_type="text/csv")
+#    response.encoding = 'gbk'
     response['Content-Disposition'] = 'attachment;filename={0}'.format(filename)
+#    writer = csv.writer(response)
+#    writer.writerows(address)
     t = loader.get_template('csv.html')
     c = Context({
-            'data':address,
+        'data':address,
         })
     response.write(t.render(c))
     return response

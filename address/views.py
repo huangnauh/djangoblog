@@ -11,6 +11,7 @@ import sys
 # Create your views here.
 class AddressList(ListView):
     model = Address
+    paginate_by = 10
 
 @csrf_exempt
 def upload(request):
