@@ -42,7 +42,8 @@ INSTALLED_APPS = (
 )
 
 TEMPLATE_DIRS = (
-        os.path.join(BASE_DIR,'templates').replace('\\','/'),
+        './templates',
+#        os.path.join(BASE_DIR,'templates').replace('\\','/'),
         )
 from django.conf import global_settings
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS +(
@@ -90,13 +91,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-#STAIC_ROOT = os.path.join(BASE_DIR,'static').replace('\\','/')
+STATIC_ROOT = os.path.join(BASE_DIR,'static_resources').replace('\\','/')
 #STATICFILES_DIRS = (
 #       os.path.join(BASE_DIR,'static').replace('\\','/'), 
 #       )
 STATICFILES_FINDERS = (  
     'django.contrib.staticfiles.finders.FileSystemFinder',     
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',   
-    'django.contrib.staticfiles.finders.DefaultStorageFinder', 
     )   
 STATIC_URL = '/static/'

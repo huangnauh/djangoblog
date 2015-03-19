@@ -28,6 +28,23 @@ class RSSFeed(Feed):
         return item.content
 
 
+def show_request(request):
+    request_path = request.path
+    request_host = request.get_host()
+    request_get_full_path = request.get_full_path()
+    request_is_secure = request.is_secure()
+    request_dict = {
+            'request_path':request_path,
+            'request_host':request_host,
+            'request_get_full_path':request_get_full_path,
+            'request_is_secure':request_is_secure,
+            }
+    request_meta_items = request.META.items()
+    return render(request,'show_request.html',{
+            "request_dict":request_dict,
+            "request_meta_items":request_meta_items
+            })
+
 @csrf_exempt
 def login(request):
     username = request.POST.get('username',None)

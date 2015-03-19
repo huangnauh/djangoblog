@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="pure-table">
+    <thead>
+    <tr>
+        <th class="pure-table th">request方法</th>
+        <th class="pure-table th">结果</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key,value in request_dict.items %}
+        <tr>
+            <td class="pure-table td">{{ key }}</td>
+            <td class="pure-table td">{{ value }}</td>
+        </tr>
+    {% endfor %}
+    {% for key,value in request_meta_items %}
+        <tr>
+            <td class="pure-table td">{{ key }}</td>
+            <td class="pure-table td">{{ value }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

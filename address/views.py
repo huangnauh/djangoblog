@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from address.models import Address
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.admin.views.decorators import staff_member_required
 import io
 import unicodecsv
 import sys
@@ -14,7 +15,10 @@ class AddressList(ListView):
     paginate_by = 10
 
 @csrf_exempt
+@staff_member_required
 def upload(request):
+    if request.user.username != 'huang':
+        return render(request,"address/error.html",{"message":"未登录"})
     file = request.FILES.get('file',None)
     if file:
         buf = io.BytesIO(file.read().decode('GBK').encode('utf-8'))

@@ -1,5 +1,6 @@
 {% extends "base.html"%}
-
+{% load change_gender %}
+{% load current_time %}
 {% block content%}
 <h2>通讯录</h2>
 <hr>
@@ -18,16 +19,16 @@
         <th class="pure-table th">手机</th>
     </tr>
     </thead>
-    <body>
+    <tbody>
     {% for person in object_list %}
     <tr>
         <td class="pure-table td"> {{ person.name }}</td>
-        <td class="pure-table td"> {{ person.gender }}</td>
+        <td class="pure-table td"> {{ person.gender|change_gender }}</td>
         <td class="pure-table td"> {{ person.telphone }}</td>
         <td class="pure-table td"> {{ person.mobile }}</td>
     </tr>
     {% endfor %}
-    </body>
+    </tbody>
 </table>
     <br/>
     {% if is_paginated %}
@@ -41,4 +42,5 @@
             {% endif %}
         </div>
     {% endif %}
+    <p>The time is {% current_time "%Y-%m-%d %I:%M %p" %}.</p>
 {% endblock %}

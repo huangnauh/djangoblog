@@ -1,0 +1,6 @@
+<uwsgi>
+    <socket>:8007</socket>
+    <module>django_wsgi</module>
+    <processes>1</processes>
+    <daemonize>uwsgi.log</daemonize>
+</uwsgi>
