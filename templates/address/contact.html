@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>contact us</h1>
+{% if form.errors %}
+    <p>{{ form.errors | pluralize }}</p>
+{% endif %}
+<form class="pure-form" action="/address/contact/" method="post">
+    {% csrf_token %}
+    <fieldset class="pure-group">
+        <input class="pure-input-1-2" type="text" name="subject" placeholder="Subject" value="{{ form.cleaned_data.subject }}"/>
+        <input class="pure-input-1-2" type="text" name="email" placeholder="Email" value="{{ form.cleaned_data.email }}"/>
+        <textarea class="pure-input-1-2" name="message" placeholder="message">{{ form.cleaned_data.message }}</textarea>
+    </fieldset>
+    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Send it</button>
+</form>
+{% endblock %}
