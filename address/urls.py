@@ -9,4 +9,5 @@ urlpatterns = patterns('',
         url(r"^upload/$",'address.views.upload'),
         url(r'^contact/$','address.sendMail.contact'),
         url(r'^contact/thanks/$','address.sendMail.contact_thanks'),
+        url(r"^longwork/$","address.sendMail.longwork"),
         )

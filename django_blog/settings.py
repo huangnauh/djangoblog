@@ -27,6 +27,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGGING_CONFIG = None
 
 # Application definition
 
@@ -42,6 +43,9 @@ INSTALLED_APPS = (
     'address',
     'djcelery',
     'celerytest',
+    'book',
+    'gunicorn',
+    'postgresqltest',
 )
 
 TEMPLATE_DIRS = (
@@ -61,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
 )
 
 ROOT_URLCONF = 'django_blog.urls'
@@ -73,8 +78,12 @@ WSGI_APPLICATION = 'django_blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'db.psycopg2',
+        'USER': "ubuntu",
+        "PASSWORD": "huanglibo",
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -109,8 +118,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'huanglibo2010@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'lcnxpgxjikptsszn'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
 
 import djcelery
 djcelery.setup_loader()

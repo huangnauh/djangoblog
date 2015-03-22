@@ -19,5 +19,6 @@ urlpatterns = patterns('',
     url(r"^login/$",'article.views.login',name='login'),
     url(r"^logout/$",'article.views.logout',name='logout'),
     url(r'^address/',include('address.urls')),
+    url(r"^postgresql/",include('postgresqltest.urls')),
     url(r"^request-info/$","article.views.show_request",name="show_request"),
 )

@@ -11,6 +11,7 @@
         <input class="pure-input-1-2" type="text" name="email" placeholder="Email" value="{{ form.cleaned_data.email }}"/>
         <textarea class="pure-input-1-2" name="message" placeholder="message">{{ form.cleaned_data.message }}</textarea>
     </fieldset>
-    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary">Send it</button>
+    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary" name="submit" value="send">Send it now</button>
+    <button type="submit" class="pure-button pure-input-1-2 pure-button-primary" name="submit" value="send1">Send it 1 minute later</button>
 </form>
 {% endblock %}
