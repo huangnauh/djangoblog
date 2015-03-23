@@ -10,4 +10,5 @@ urlpatterns = patterns('',
         url(r'^contact/$','address.sendMail.contact'),
         url(r'^contact/thanks/$','address.sendMail.contact_thanks'),
         url(r"^longwork/$","address.sendMail.longwork"),
+        url(r"^accounts/login/$","address.views.login"),
         )

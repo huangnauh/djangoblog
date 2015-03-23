@@ -1,18 +1,48 @@
 #coding=utf-8
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.views.generic import ListView
 from address.models import Address
 from django.http import HttpResponseRedirect
+from django.contrib import auth,messages
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.admin.views.decorators import staff_member_required
 import io
 import unicodecsv
 import sys
+from forms import LoginForm
 
 # Create your views here.
+
+def login(request):
+    if request.method == "GET":
+        form = LoginForm()
+        return render(request,"address/login.html",{"form":form,})
+    else:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST.get('username','')
+            password = request.POST.get("password",'')
+            user = auth.authenticate(username=username,password=password)
+            if user is not None and user.is_active:
+                auth.login(request,user)
+                return render(request,'home.html')
+            else:
+                return render(request,"address/login.html",{"form":form,"password_is_wrong":True})
+        else:
+            return render(request,"address/login.html",{"form":form,})
+
+
+
+
+
 class AddressList(ListView):
     model = Address
     paginate_by = 10
+
+
+
+
 
 @csrf_exempt
 @staff_member_required

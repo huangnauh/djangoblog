@@ -33,6 +33,7 @@ LOGGING_CONFIG = None
 
 INSTALLED_APPS = (
     'bootstrap_admin',
+    'bootstrap_toolkit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
