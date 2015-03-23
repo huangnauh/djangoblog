@@ -1,0 +1,13 @@
+Pythonpy：命令行中的瑞士军刀
+https://github.com/Russell91/pythonpy
+psutil： 一个基于Python的跨平台系统信息提取工具，使用它可以获取CPU, memory, disks, network, users等系统信息。
+https://github.com/giampaolo/psutil
+JetBrains PyCharm
+SCons 是一个用 Python 语言编写的类似于 make 工具的程序。
+
+
+对于Mac用户来说，OS X自带了ctags命令，但这并不是vim所需要的ctags，要重新安装：sudo port install ctags。由于OS X自带的ctags位于/usr/bin目录下，一般在PATH中是优先加载的，所以安装完成后，还需要设置一下环境变量，确保你在命令行使用的是新安装的ctags。如果没做特殊设置，安装的ctags一般在/opt/local/bin下，在当前用户的.profile中增加如下代码：export PATH=/opt/local/bin/:$PATH，在终端执行source .profile可立即生效。
+
+http://zuyunfei.com/2013/04/12/killer-plugin-of-vim-vundle/
+http://www.cnblogs.com/chijianqiang/archive/2012/12/17/vim-4.html
+http://blog.jobbole.com/51498/
