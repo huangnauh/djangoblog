@@ -1,0 +1,29 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'docunext/closetag.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'kien/ctrlp.vim'
+call vundle#end()
+filetype plugin indent on    " required
+" 自动补全单引号，双引号等
+au FileType python let b:delimitMate_nesting_quotes = ['"']
+" 自动补全html/xml标签
+let g:closetag_html_style=1
+" 文件搜索
+let g:ctrip_map = '<c-p>'
+let g:ctrip_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
